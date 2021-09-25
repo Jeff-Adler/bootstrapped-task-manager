@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import axios from 'axios';
-import { TaskList } from './components/taskList';
+import { TaskContainer } from './containers/task.container';
 import { login } from './services/auth.service';
 import { getNodeText } from '@testing-library/dom';
 import { Profile } from './components/profile';
@@ -11,14 +11,6 @@ import * as config from './config.js';
 const { test_email, test_password } = config;
 
 export default function App() {
-  const [tasks, setTasks] = useState([]);
-  useEffect(() => {
-    (async () => {
-      const tasks = await getTasks();
-      setTasks(tasks);
-    })();
-  }, []);
-
   const [user, setUser] = useState(null);
   useEffect(() => {
     (async () => {
@@ -29,10 +21,10 @@ export default function App() {
 
   return (
     <div className="App">
-      {user && tasks && tasks.length ? (
+      {user ? (
         <>
           <Profile user={user} />
-          <TaskList tasks={tasks} />
+          <TaskContainer />
         </>
       ) : (
         <>
