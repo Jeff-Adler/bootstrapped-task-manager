@@ -9,12 +9,6 @@ export const TaskContainer = (props) => {
     const tasks = await getTasks();
     setTasks(tasks);
   };
-  // useEffect(() => {
-  //   (async () => {
-  //     const tasks = await getTasks();
-  //     setTasks(tasks);
-  //   })();
-  // }, []);
 
   return (
     <div className="task_container">
