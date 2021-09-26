@@ -11,6 +11,7 @@ import * as config from './config.js';
 const { test_email, test_password } = config;
 
 export default function App() {
+  // const [jwt, setJwt] = useState(storedJwt || null);
   const [user, setUser] = useState(null);
   useEffect(() => {
     (async () => {

@@ -13,9 +13,8 @@ export const login = async (email, password) => {
         password,
       },
     });
-
+    console.log(response);
     const user = response.data;
-    console.log(user);
     return user;
   } catch (error) {
     console.error(error);
