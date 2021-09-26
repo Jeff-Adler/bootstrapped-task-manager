@@ -12,6 +12,7 @@ export const login = async (email, password) => {
         email,
         password,
       },
+      withCredentials: true,
     });
     console.log(response);
     const user = response.data;
