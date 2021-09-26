@@ -1,6 +1,6 @@
 export const Profile = (props) => {
   const { email, password } = props.user;
-  console.log(props.user);
+
   return (
     <div className="profile">
       <h1>Profile Page</h1>
