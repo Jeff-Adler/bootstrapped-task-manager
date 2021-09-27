@@ -10,8 +10,9 @@ import { getTasks } from 'services/task.service';
 import { Warning404 } from 'components/Warning404';
 import { LoginForm } from 'components/LoginForm';
 import { SignupForm } from 'components/SignupForm';
+import Navbar from 'components/Navbar';
 
-function App() {
+function App({ history }) {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(false);
 
@@ -20,6 +21,7 @@ function App() {
       const response = await loginUser(email, password);
 
       setUser(response.data);
+      history.push('/tasks');
     } catch (error) {
       setError(true);
     }
@@ -27,6 +29,7 @@ function App() {
 
   return (
     <div className="App">
+      <Navbar />
       <Switch>
         <Route exact path="/login" render={() => <LoginForm user={user} loginSubmitHandler={loginSubmitHandler} />} />
         <Route exact path="/signup" component={SignupForm} />
@@ -36,13 +39,6 @@ function App() {
 
         <Route component={404} component={Warning404} />
       </Switch>
-      {user ? (
-        <div>
-          <TaskContainer />
-        </div>
-      ) : (
-        ''
-      )}
     </div>
   );
 }
