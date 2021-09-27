@@ -1,12 +1,18 @@
+import { ListGroup, ListGroupItem } from 'reactstrap';
+
 export const TaskList = ({ tasks }) => {
   const mapTasks = () => {
     if (tasks.length) {
       return tasks.map((task) => {
-        return <li key={task.id}>{task.description}</li>;
+        return <ListGroupItem key={task.id}>{task.description}</ListGroupItem>;
       });
     }
     return 'No tasks to show';
   };
 
-  return <ol>{mapTasks()}</ol>;
+  return (
+    <div className="taskContainer center">
+      <ListGroup>{mapTasks()}</ListGroup>
+    </div>
+  );
 };

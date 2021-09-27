@@ -23,3 +23,15 @@ export const postSignup = async (email, password) => {
   );
   return response;
 };
+
+export const postLogout = async (email, password) => {
+  const response = await axios.post(
+    `auth/logout`,
+    {
+      email,
+      password,
+    },
+    { withCredentials: true }
+  );
+  return response;
+};

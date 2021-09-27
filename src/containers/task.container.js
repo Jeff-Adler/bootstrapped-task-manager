@@ -8,24 +8,24 @@ export const TaskContainer = (props) => {
   const [isFetching, setIsFetching] = useState(false);
   const [error, setError] = useState(false);
 
-  const handleClick = async () => {
-    try {
-      setIsFetching(true);
-      const response = await getTasks();
+  useEffect(() => {
+    (async () => {
+      try {
+        setIsFetching(true);
+        const response = await getTasks();
 
-      setIsFetching(false);
-      console.log(response);
-      setTasks(response.data);
-    } catch (error) {
-      console.error(error);
-      setIsFetching(false);
-      setError(true);
-    }
-  };
+        setIsFetching(false);
+        setTasks(response.data);
+      } catch (error) {
+        console.error(error);
+        setIsFetching(false);
+        setError(true);
+      }
+    })();
+  }, []);
 
   return (
     <div className="task_container">
-      <button onClick={handleClick}>Get Tasks</button>
       {isFetching ? (
         <>
           <h3>Retrieving tasks</h3>
