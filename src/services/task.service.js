@@ -1,7 +1,5 @@
 import axios from 'axios';
 import * as config from '../config.js';
-import { wrapper } from 'axios-cookiejar-support';
-import { CookieJar } from 'tough-cookie';
 
 const { api_url, api_port } = config;
 

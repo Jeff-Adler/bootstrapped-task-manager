@@ -3,7 +3,7 @@ import * as config from '../config.js';
 
 const { test_email, test_password } = config;
 
-export const Login = ({ loginSubmitHandler }) => {
+export const Login = ({ loginSubmitHandler, errorMessage }) => {
   const [email, setEmail] = useState(test_email);
   const [password, setPassword] = useState(test_password);
 
@@ -13,8 +13,17 @@ export const Login = ({ loginSubmitHandler }) => {
     await loginSubmitHandler(email, password);
   };
 
+  const displayErrorMessage = () => {
+    if (errorMessage) {
+      console.log('if condition hit!');
+      return <h3>Invalid credentials</h3>;
+    }
+    return null;
+  };
+
   return (
     <div className="loginPage">
+      <h1>Login</h1>
       <form id="login" onSubmit={async (e) => await handleSubmit(e)}>
         <label htmlFor="email">email</label>
         <input id="email" value={email} onChange={(e) => setEmail(e.target.value)}></input>
@@ -26,6 +35,7 @@ export const Login = ({ loginSubmitHandler }) => {
           Login
         </button>
       </form>
+      {displayErrorMessage()}
     </div>
   );
 };
