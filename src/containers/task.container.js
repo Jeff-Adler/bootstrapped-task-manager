@@ -14,6 +14,7 @@ export const TaskContainer = (props) => {
       const response = await getTasks();
 
       setIsFetching(false);
+      console.log(response);
       setTasks(response.data);
     } catch (error) {
       console.error(error);

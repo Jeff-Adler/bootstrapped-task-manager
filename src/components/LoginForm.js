@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import * as config from 'config.js';
 import { displayErrorMessage } from 'helpers/displayErrorMessage';
+import { Link } from 'react-router-dom';
 
 const { test_email, test_password } = config;
 
@@ -28,6 +29,7 @@ export const LoginForm = ({ loginSubmitHandler, error }) => {
           Login
         </button>
       </form>
+      <p>Not yet a user?</p> <Link to="/signup">Sign up</Link>
       {displayErrorMessage(error, 'Invalid Credentials')}
     </div>
   );

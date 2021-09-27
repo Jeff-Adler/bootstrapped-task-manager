@@ -7,4 +7,6 @@ export const getTasks = async () => {
   const response = await axios.get(`/tasks/`, {
     withCredentials: true,
   });
+
+  return response;
 };
