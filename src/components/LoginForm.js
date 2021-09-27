@@ -3,7 +3,7 @@ import * as config from '../config.js';
 
 const { test_email, test_password } = config;
 
-export const Login = ({ loginSubmitHandler, errorMessage }) => {
+export const LoginForm = ({ loginSubmitHandler, errorMessage }) => {
   const [email, setEmail] = useState(test_email);
   const [password, setPassword] = useState(test_password);
 
@@ -15,7 +15,6 @@ export const Login = ({ loginSubmitHandler, errorMessage }) => {
 
   const displayErrorMessage = () => {
     if (errorMessage) {
-      console.log('if condition hit!');
       return <h3>Invalid credentials</h3>;
     }
     return null;

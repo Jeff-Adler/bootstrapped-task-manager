@@ -1,4 +1,4 @@
-export const Profile = (props) => {
+export const ProfilePage = (props) => {
   const { email, password } = props.user;
 
   return (

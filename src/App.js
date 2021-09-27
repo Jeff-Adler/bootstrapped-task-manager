@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
-import axios from 'axios';
-import { TaskContainer } from './containers/task.container';
-import { loginRequest } from './services/auth.service';
 import { getNodeText } from '@testing-library/dom';
-import { Profile } from './components/profile';
-import { getTasks } from './services/task.service';
-import { Login } from './components/login';
+import axios from 'axios';
+import 'App.css';
+import { TaskContainer } from 'containers/task.container';
+import { loginUser } from 'services/auth.service';
+import { ProfilePage } from 'components/ProfilePage';
+import { getTasks } from 'services/task.service';
+import { LoginForm } from 'components/LoginForm';
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -14,7 +14,7 @@ export default function App() {
 
   const loginSubmitHandler = async (email, password) => {
     try {
-      const response = await loginRequest(email, password);
+      const response = await loginUser(email, password);
 
       setUser(response.data);
     } catch (error) {
@@ -26,12 +26,12 @@ export default function App() {
     <div className="App">
       {user ? (
         <>
-          <Profile user={user} />
+          <ProfilePage user={user} />
           <TaskContainer />
         </>
       ) : (
         <>
-          <Login loginSubmitHandler={loginSubmitHandler} errorMessage={errorMessage} />
+          <LoginForm loginSubmitHandler={loginSubmitHandler} errorMessage={errorMessage} />
         </>
       )}
     </div>
