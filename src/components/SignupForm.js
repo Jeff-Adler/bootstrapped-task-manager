@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { postSignup } from 'services/auth.service';
 import { displayErrorMessage } from 'helpers/displayErrorMessage';
 import { Link } from 'react-router-dom';
+import { Button, Form, FormGroup, Label, Input, NavLink } from 'reactstrap';
 
 export const SignupForm = () => {
   const [email, setEmail] = useState('');
@@ -27,26 +28,53 @@ export const SignupForm = () => {
   };
 
   return (
-    <div className="signup">
+    <div className="signupWrapper">
       <h1>Signup</h1>
       {isRegistered ? (
         <>
+          <br />
           <h3>You're signed up!</h3>
+          <br />
           <Link to="/login">Login?</Link>
         </>
       ) : (
         <>
-          <form onSubmit={async (e) => await handleSubmit(e)}>
-            <label htmlFor="email">email</label>
-            <input id="email" value={email} onChange={(e) => setEmail(e.target.value)}></input>
-
-            <label htmlFor="password">password</label>
-            <input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)}></input>
-
-            <button type="submit" value="Signup">
-              Signup
-            </button>
-          </form>
+          <div className="center">
+            <Form id="signupForm" onSubmit={async (e) => await handleSubmit(e)} style={{ width: '300px' }}>
+              <FormGroup>
+                <Label for="email" className="mr-sm-2">
+                  Email
+                </Label>
+                <Input
+                  style={{ width: '300px' }}
+                  type="text"
+                  name="email"
+                  placeholder="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </FormGroup>
+              <br />
+              <FormGroup>
+                <Label for="password" className="mr-sm-2">
+                  Password
+                </Label>
+                <Input
+                  style={{ width: '300px' }}
+                  type="password"
+                  name="password"
+                  placeholder="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </FormGroup>
+              <br />
+              <Button type="submit" value="Signup">
+                Login
+              </Button>
+            </Form>
+          </div>
+          <br />
           {displayErrorMessage(error, 'Signup failed')}
         </>
       )}

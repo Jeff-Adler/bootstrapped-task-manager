@@ -23,7 +23,7 @@ export const LoginForm = ({ loginSubmitHandler, error }) => {
         <Form id="loginForm" onSubmit={async (e) => await handleSubmit(e)} style={{ width: '300px' }}>
           <FormGroup>
             <Label for="email" className="mr-sm-2">
-              Username
+              Email
             </Label>
             <Input
               style={{ width: '300px' }}
