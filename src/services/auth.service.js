@@ -1,7 +1,4 @@
 import axios from 'axios';
-import * as config from '../config.js';
-
-const { api_url, api_port } = config;
 
 export const loginUser = async (email, password) => {
   const response = await axios.post(
@@ -15,9 +12,9 @@ export const loginUser = async (email, password) => {
   return response;
 };
 
-export const signupUser = async (email, password) => {
+export const postSignup = async (email, password) => {
   const response = await axios.post(
-    `/auth/signup`,
+    `/auth/register`,
     {
       email,
       password,

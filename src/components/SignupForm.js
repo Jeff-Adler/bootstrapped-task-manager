@@ -1,11 +1,22 @@
+import React, {useState} from 'react'
+import {postSignup} from 'services/auth.service'
+
 export const SignupForm = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isRegistered, setIsRegistered] = useState(false)
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await loginSubmitHandler(email, password);
+    try {
+      await postSignup(email, password);
+
+      setIsRegistered(true)
+    } catch (error) {
+
+    }
+
   };
 
   return (
