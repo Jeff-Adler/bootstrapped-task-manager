@@ -9,7 +9,7 @@ export const Routes = () => {
     <Route exact path="/" component={HomePage} />
     <Route exact path="/login" component={LoginForm} />
     <Route exact path="/signup" component={SignupForm} />
-    <Route exact path="/tasks" component={TaskContainer}
+    <Route exact path="/tasks" component={TaskContainer} />
 
     <Redirect exacts from="/" to="/login" />
 

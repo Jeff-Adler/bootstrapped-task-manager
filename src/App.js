@@ -8,9 +8,13 @@ import { loginUser } from 'services/auth.service';
 import { ProfilePage } from 'components/ProfilePage';
 import { getTasks } from 'services/task.service';
 import { LoginForm } from 'components/LoginForm';
-import {Routes} from 'Routes'
+import { Switch, Route, Redirect } from 'react-router';
+import { Warning404 } from 'components/Warning404';
+import { LoginForm } from 'components/LoginForm';
+import { SignupForm } from 'components/SignupForm';
+import { TaskContainer } from 'containers/Task.container';
 
-export default function withRouter(App()) {
+function App() {
   const [user, setUser] = useState(null);
   const [error, setError] = useState(false);
 
@@ -26,18 +30,25 @@ export default function withRouter(App()) {
 
   return (
     <div className="App">
-      <Switch>
-        {user ? (
-          <>
-            <ProfilePage user={user} />
-            <TaskContainer />
-          </>
-        ) : (
-          <>
-            <LoginForm loginSubmitHandler={loginSubmitHandler} error={error} />
-          </>
-        )}
-      </Switch>
+      {user ? (
+        <div>
+          <Switch>
+            <Route exact path="/login" component={LoginForm} />
+            <Route exact path="/signup" component={SignupForm} />
+            <Route exact path="/tasks" component={TaskContainer} />
+
+            <Redirect exacts from="/" to="/login" />
+
+            <Route component={404} component={Warning404} />
+          </Switch>
+        </div>
+      ) : (
+        <div>
+          <LoginForm loginSubmitHandler={loginSubmitHandler} error={error} />
+        </div>
+      )}
     </div>
   );
 }
+
+export default withRouter(App);
