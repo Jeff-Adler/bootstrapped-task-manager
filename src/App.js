@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getNodeText } from '@testing-library/dom';
 import axios from 'axios';
 import 'App.css';
-import { TaskContainer } from 'containers/task.container';
+import { TaskContainer } from 'containers/Task.container';
 import { loginUser } from 'services/auth.service';
 import { ProfilePage } from 'components/ProfilePage';
 import { getTasks } from 'services/task.service';

@@ -14,3 +14,15 @@ export const loginUser = async (email, password) => {
   );
   return response;
 };
+
+export const signupUser = async (email, password) => {
+  const response = await axios.post(
+    `/auth/signup`,
+    {
+      email,
+      password,
+    },
+    { withCredentials: true }
+  );
+  return response;
+};
