@@ -1,6 +1,4 @@
-export const TaskList = (props) => {
-  const { tasks } = props;
-
+export const TaskList = ({ tasks }) => {
   const mapTasks = () => {
     return tasks.map((task) => {
       return <li key={task.id}>{task.description}</li>;

@@ -10,7 +10,7 @@ import { LoginForm } from 'components/LoginForm';
 
 export default function App() {
   const [user, setUser] = useState(null);
-  const [errorMessage, setErrorMessage] = useState('');
+  const [error, setError] = useState(false);
 
   const loginSubmitHandler = async (email, password) => {
     try {
@@ -18,7 +18,7 @@ export default function App() {
 
       setUser(response.data);
     } catch (error) {
-      setErrorMessage('Invalid credetials');
+      setError(true);
     }
   };
 
@@ -31,7 +31,7 @@ export default function App() {
         </>
       ) : (
         <>
-          <LoginForm loginSubmitHandler={loginSubmitHandler} errorMessage={errorMessage} />
+          <LoginForm loginSubmitHandler={loginSubmitHandler} error={error} />
         </>
       )}
     </div>

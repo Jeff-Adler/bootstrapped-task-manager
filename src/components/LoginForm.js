@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import * as config from '../config.js';
+import * as config from 'config.js';
+import { displayErrorMessage } from 'helpers/displayErrorMessage';
 
 const { test_email, test_password } = config;
 
-export const LoginForm = ({ loginSubmitHandler, errorMessage }) => {
+export const LoginForm = ({ loginSubmitHandler, error }) => {
   const [email, setEmail] = useState(test_email);
   const [password, setPassword] = useState(test_password);
 
@@ -11,13 +12,6 @@ export const LoginForm = ({ loginSubmitHandler, errorMessage }) => {
     e.preventDefault();
 
     await loginSubmitHandler(email, password);
-  };
-
-  const displayErrorMessage = () => {
-    if (errorMessage) {
-      return <h3>Invalid credentials</h3>;
-    }
-    return null;
   };
 
   return (
@@ -34,7 +28,7 @@ export const LoginForm = ({ loginSubmitHandler, errorMessage }) => {
           Login
         </button>
       </form>
-      {displayErrorMessage()}
+      {displayErrorMessage(error, 'Invalid Credentials')}
     </div>
   );
 };
