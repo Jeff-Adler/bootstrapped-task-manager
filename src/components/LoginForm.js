@@ -2,6 +2,7 @@ import { useState } from 'react';
 import * as config from 'config.js';
 import { displayErrorMessage } from 'helpers/displayErrorMessage';
 import { Link } from 'react-router-dom';
+import { Button, Form, FormGroup, Label, Input, NavLink } from 'reactstrap';
 
 const { test_email, test_password } = config;
 
@@ -18,17 +19,42 @@ export const LoginForm = ({ loginSubmitHandler, error }) => {
   return (
     <div className="loginPage">
       <h1>Login</h1>
-      <form id="login" onSubmit={async (e) => await handleSubmit(e)}>
-        <label htmlFor="email">email</label>
-        <input id="email" value={email} onChange={(e) => setEmail(e.target.value)}></input>
-
-        <label htmlFor="password">password</label>
-        <input id="password" type="password" value={password} onChange={(e) => setPassword(e.target.value)}></input>
-
-        <button type="submit" value="Login">
-          Login
-        </button>
-      </form>
+      <div className="center">
+        <Form id="loginForm" onSubmit={async (e) => await handleSubmit(e)} style={{ width: '300px' }}>
+          <FormGroup>
+            <Label for="email" className="mr-sm-2">
+              Username
+            </Label>
+            <Input
+              style={{ width: '300px' }}
+              type="text"
+              name="email"
+              placeholder="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </FormGroup>
+          <br />
+          <FormGroup>
+            <Label for="password" className="mr-sm-2">
+              Password
+            </Label>
+            <Input
+              style={{ width: '300px' }}
+              type="password"
+              name="password"
+              placeholder="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+          </FormGroup>
+          <br />
+          <Button type="submit" value="Login">
+            Submit
+          </Button>
+        </Form>
+      </div>
+      <br />
       <p>Not yet a user?</p> <Link to="/signup">Sign up</Link>
       {displayErrorMessage(error, 'Invalid Credentials')}
     </div>

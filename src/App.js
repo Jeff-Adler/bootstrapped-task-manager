@@ -10,7 +10,7 @@ import { getTasks } from 'services/task.service';
 import { Warning404 } from 'components/Warning404';
 import { LoginForm } from 'components/LoginForm';
 import { SignupForm } from 'components/SignupForm';
-import Navbar from 'components/Navbar';
+import NavBar from 'components/Navbar';
 
 function App({ history }) {
   const [user, setUser] = useState(null);
@@ -29,7 +29,7 @@ function App({ history }) {
 
   return (
     <div className="App">
-      <Navbar />
+      <NavBar />
       <Switch>
         <Route exact path="/login" render={() => <LoginForm user={user} loginSubmitHandler={loginSubmitHandler} />} />
         <Route exact path="/signup" component={SignupForm} />

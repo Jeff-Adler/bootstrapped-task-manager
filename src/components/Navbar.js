@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
   Collapse,
   Navbar,
@@ -11,10 +12,10 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-  NavbarText
+  NavbarText,
 } from 'reactstrap';
 
-export default const Navbar = (props) => {
+const NavBar = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
@@ -22,25 +23,28 @@ export default const Navbar = (props) => {
   return (
     <div>
       <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">TaskManager</NavbarBrand>
+        <NavbarBrand tag={Link} to="/tasks">
+          TaskManager
+        </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
-
             <NavItem>
-              <NavLink tag={Link} to="/tasks">Tasks</NavLink>
+              <NavLink tag={Link} to="/tasks">
+                Tasks
+              </NavLink>
             </NavItem>
 
             <NavItem>
-              <NavLink tag={Link} to="/logout">Logout</NavLink>
+              <NavLink tag={Link} to="/logout">
+                Logout
+              </NavLink>
             </NavItem>
-
           </Nav>
-          <NavbarText>TaskManager</NavbarText>
         </Collapse>
       </Navbar>
     </div>
   );
-}
+};
 
-export default Navbar
+export default NavBar;
