@@ -6,19 +6,23 @@ import { login } from './services/auth.service';
 import { getNodeText } from '@testing-library/dom';
 import { Profile } from './components/profile';
 import { getTasks } from './services/task.service';
-import * as config from './config.js';
-
-const { test_email, test_password } = config;
+import { Login } from './components/login';
 
 export default function App() {
   // const [jwt, setJwt] = useState(storedJwt || null);
   const [user, setUser] = useState(null);
-  useEffect(() => {
-    (async () => {
-      const user = await login(test_email, test_password);
-      setUser(user);
-    })();
-  }, []);
+
+  const loginSubmitHandler = async (email, password) => {
+    const user = await login(email, password);
+
+    setUser(user);
+  };
+  // useEffect(() => {
+  //   (async () => {
+  //     const user = await login(test_email, test_password);
+  //     setUser(user);
+  //   })();
+  // }, []);
 
   return (
     <div className="App">
@@ -29,7 +33,7 @@ export default function App() {
         </>
       ) : (
         <>
-          <h1>Loading</h1>
+          <Login loginSubmitHandler={loginSubmitHandler} />
         </>
       )}
     </div>

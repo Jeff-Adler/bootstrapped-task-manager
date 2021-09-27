@@ -8,7 +8,7 @@ const { api_url, api_port } = config;
 export const login = async (email, password) => {
   try {
     const response = await axios.post(
-      `auth/login`,
+      `/auth/login`,
       {
         email,
         password,
