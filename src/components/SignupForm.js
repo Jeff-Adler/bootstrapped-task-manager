@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { postSignup } from 'services/auth.service';
 import { displayErrorMessage } from 'helpers/displayErrorMessage';
 import { Link } from 'react-router-dom';
 import { Button, Form, FormGroup, Label, Input, NavLink } from 'reactstrap';
+import { useAuth } from 'contexts/authContext';
 
 export const SignupForm = () => {
+  const { signup } = useAuth();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isRegistered, setIsRegistered] = useState(false);
@@ -16,7 +18,7 @@ export const SignupForm = () => {
 
     try {
       setIsLoading(true);
-      await postSignup(email, password);
+      await signup(email, password);
 
       setIsRegistered(true);
       setIsLoading(false);
