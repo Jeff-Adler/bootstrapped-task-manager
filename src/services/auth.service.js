@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const loginUser = async (email, password) => {
+export const postLogin = async (email, password) => {
   const response = await axios.post(
     `/auth/login`,
     {

@@ -1,9 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import { Route, Switch, useRouteMatch } from 'react-router-dom';
+import { withRouter } from 'react-router';
 import { getTasks } from 'services/task.service';
 import { TaskList } from 'components/TaskList';
 import { displayErrorMessage } from 'helpers/displayErrorMessage';
+import { Task } from 'components/Task';
 
-export const TaskContainer = (props) => {
+const TaskContainer = (props) => {
+  let { path, url } = useRouteMatch();
+
   const [tasks, setTasks] = useState([]);
   const [isFetching, setIsFetching] = useState(false);
   const [error, setError] = useState(false);
@@ -31,16 +36,16 @@ export const TaskContainer = (props) => {
           <h3>Retrieving tasks</h3>
         </>
       ) : (
-        ''
+        <div>
+          <Switch>
+            <Route exact path={`${path}`} render={() => <TaskList tasks={tasks} />} />
+            <Route exact path={`${path}/:id`} render={() => <Task tasks={tasks} />} />
+          </Switch>
+        </div>
       )}
       {error ? <>{displayErrorMessage(error, 'Could not retrieve tasks')}</> : ''}
-      {tasks ? (
-        <div>
-          <TaskList tasks={tasks} />
-        </div>
-      ) : (
-        ''
-      )}
     </div>
   );
 };
+
+export default withRouter(TaskContainer);

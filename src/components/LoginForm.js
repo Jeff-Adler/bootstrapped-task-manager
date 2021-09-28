@@ -3,17 +3,21 @@ import * as config from 'config.js';
 import { displayErrorMessage } from 'helpers/displayErrorMessage';
 import { Link } from 'react-router-dom';
 import { Button, Form, FormGroup, Label, Input, NavLink } from 'reactstrap';
+import { useAuth } from 'contexts/authContext';
 
 const { test_email, test_password } = config;
 
-export const LoginForm = ({ loginSubmitHandler, error }) => {
+export const LoginForm = () => {
+  const { login, error } = useAuth();
+
   const [email, setEmail] = useState(test_email);
   const [password, setPassword] = useState(test_password);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    await loginSubmitHandler(email, password);
+    // await loginSubmitHandler(email, password);
+    await login(email, password);
   };
 
   return (

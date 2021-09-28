@@ -73,7 +73,10 @@ export const SignupForm = () => {
                 Login
               </Button>
             </Form>
+            <br />
           </div>
+          <br />
+          <p>Already a user?</p> <Link to="/login">Sign up</Link>
           <br />
           {displayErrorMessage(error, 'Signup failed')}
         </>
