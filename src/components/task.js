@@ -37,7 +37,7 @@ export const Task = () => {
           <ListGroupItem>TESTING</ListGroupItem>
 
           <ListGroupItem>{task.description}</ListGroupItem>
-          <ListGroupItem>Completed: {task.completed}</ListGroupItem>
+          <ListGroupItem>Completed: {`${task.completed}`}</ListGroupItem>
         </ListGroup>
       )}
     </div>
