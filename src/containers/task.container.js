@@ -38,8 +38,8 @@ const TaskContainer = (props) => {
       ) : (
         <div>
           <Switch>
-            <Route exact path={`${path}`} render={() => <TaskList tasks={tasks} />} />
             <Route exact path={`${path}/:id`} render={() => <Task tasks={tasks} />} />
+            <Route exact path={`${path}/`} render={() => <TaskList tasks={tasks} />} />
           </Switch>
         </div>
       )}
