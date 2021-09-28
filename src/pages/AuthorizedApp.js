@@ -1,3 +1,4 @@
+import { Route, Switch, Redirect } from 'react-router';
 import { Logout } from 'components/Logout';
 import NavBar from 'components/NavBar';
 import { Routes } from 'Routes';

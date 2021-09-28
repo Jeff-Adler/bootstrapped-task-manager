@@ -4,6 +4,8 @@ import { ListGroup, ListGroupItem } from 'reactstrap';
 import { getTasks } from 'services/task.service';
 
 export const TaskList = () => {
+  const { path } = useRouteMatch();
+
   const [tasks, setTasks] = useState([]);
   const [isFetching, setIsFetching] = useState(false);
   const [error, setError] = useState(false);

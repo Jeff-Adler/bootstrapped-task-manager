@@ -10,3 +10,11 @@ export const getTasks = async () => {
 
   return response;
 };
+
+export const getTask = async (id) => {
+  const response = await axios.get(`/tasks/${id}`, {
+    withCredentials: true,
+  });
+
+  return response;
+};

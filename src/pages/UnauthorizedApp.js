@@ -1,6 +1,7 @@
 import { LoginForm } from 'components/LoginForm';
 import { SignupForm } from 'components/SignupForm';
 import { Route, Switch, Redirect } from 'react-router';
+import { Warning404 } from 'components/Warning404';
 
 export const UnauthorizedApp = () => {
   return (
